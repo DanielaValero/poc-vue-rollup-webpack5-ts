@@ -3,7 +3,7 @@ const { merge } = require("webpack-merge");
 const config = require("../project.config");
 const baseWebpackConfig = require("./webpack.base.js");
 const cssWebpackConfig = require("./webpack.css.js");
-const paths = require("./paths");
+
 
 module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
     // Set the mode to development or production
@@ -16,7 +16,7 @@ module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
     // Spin up a server for quick development
     devServer: {
         historyApiFallback: true,
-        contentBase: paths.build,
+        // contentBase: config.build,
         open: false,
         compress: true,
         hot: true,

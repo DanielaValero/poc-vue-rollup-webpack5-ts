@@ -1,4 +1,5 @@
-const { CleanWebpackPlugin, DefinePlugin } = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { DefinePlugin } = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const PrettierPlugin = require("prettier-webpack-plugin");
