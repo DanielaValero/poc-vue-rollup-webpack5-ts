@@ -1,0 +1,36 @@
+{
+    "name": "rollupvue-app",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "rollup -c",
+        "dev": "rollup -c -w",
+        "start": "sirv public"
+    },
+    "devDependencies": {
+        "@rollup/plugin-alias": "^3.1.5",
+        "@rollup/plugin-commonjs": "^20.0.0",
+        "@rollup/plugin-node-resolve": "^13.0.4",
+        "@typescript-eslint/eslint-plugin": "^4.30.0",
+        "@typescript-eslint/parser": "^4.30.0",
+        "eslint": "^7.32.0",
+        "eslint-plugin-vue": "^7.17.0",
+        "rollup": "^2.56.3",
+        "rollup-plugin-css-only": "^3.1.0",
+        "rollup-plugin-livereload": "^2.0.5",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-typescript": "^1.0.1",
+        "rollup-plugin-vue": "^6.0.0",
+        "sirv-cli": "^1.0.14",
+        "svelte": "^3.42.4",
+        "svelte-check": "^2.2.5",
+        "svelte-preprocess": "^4.8.0",
+        "tslib": "^2.3.1",
+        "typescript": "^4.4.2"
+    },
+    "dependencies": {
+        "bootstrap": "^5.1.0",
+        "vue": "^3.2.6"
+    }
+}
