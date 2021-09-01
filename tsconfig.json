@@ -6,7 +6,8 @@
         "jsx": "preserve",
         "moduleResolution": "node",
         "types": [
-            "vue"
+            "vue",
+            "webpack-env"
         ],
         "lib": [
             "esnext",

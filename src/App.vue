@@ -1,51 +1,30 @@
 <template>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col text-center">
-
-                <img src="assets/img/vue-logo.png" class="logo" />
-
-                <HelloWorld msg="Vue 3 + Rollup + Bootstrap 5 + Livereload"></HelloWorld>
-
-                <p class="mt-2">Test Variable: {{ test }}</p>
-
-                <button class="btn btn-danger" @click="changeVariable">Change Variable</button>
-
-            </div>
-        </div>
-    </div>
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </div>
+  <router-view />
 </template>
 
-<script lang="ts">
+<style lang="css">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-import { defineComponent, ref } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+#nav {
+  padding: 30px;
 
-export default defineComponent({
-    name: "App",
-    components: {
-        HelloWorld
-    },
-    setup()
-    {
-        const test = ref("test variable");
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-        const changeVariable = () =>
-        {
-            test.value = "variable changed";
-        };
-
-        return {
-            test,
-            changeVariable
-        };
+    &.router-link-exact-active {
+      color: #42b983;
     }
-});
-
-</script>
-
-<style>
-    .logo {
-        max-width: 100px;
-    }
+  }
+}
 </style>
