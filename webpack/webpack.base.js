@@ -5,6 +5,7 @@ const PrettierPlugin = require("prettier-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 const config = require("../project.config");
+const path = require("path");
 
 module.exports = {
     // Where webpack looks to start building the bundle
@@ -14,17 +15,17 @@ module.exports = {
 
     // Where webpack outputs the assets and bundles
     output: {
-        path: paths.resolve(config.outputDir),
-        publicPath: config.dev.publicPath,
-        filename: outputFileName,
-        chunkFilename: outputFileName
+        path: config.outputDir,
+        publicPath: config.dev.publicPath
     },
 
     resolve: {
         alias: {
             "@": config.src
         },
-        extensions: [".ts", ".tsx", ".js", ".jsx", ".vue", ".json"]
+        extensions: [".ts", ".tsx", ".js", ".jsx", ".vue", ".json"],
+        modules: [config.src, "node_modules"]
+   
     },
 
     // Customize the webpack build process
@@ -39,7 +40,7 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: paths.public,
+                    from: config.public,
                     to: "assets",
                     globOptions: {
                         ignore: ["*.DS_Store"]
@@ -53,7 +54,7 @@ module.exports = {
         // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
         new HtmlWebpackPlugin({
             title: "webpack",
-            template: paths.resolve("public/index.html"), 
+            template: path.resolve(__dirname, "../public/index.html"), 
             filename: "index.html" // output file
         }),
 
@@ -68,9 +69,9 @@ module.exports = {
         new DefinePlugin({
             // vue3 feature flags <http://link.vuejs.org/feature-flags>
             __VUE_OPTIONS_API__: "true",
-            __VUE_PROD_DEVTOOLS__: "false",
+            __VUE_PROD_DEVTOOLS__: "false"
 
-            ...resolveClientEnv({ publicPath: config.dev.publicPath })
+            //  ...resolveClientEnv({ publicPath: config.dev.publicPath })
         })
     ],
 
@@ -124,13 +125,7 @@ module.exports = {
             // Fonts and SVGs: Inline files
             { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: "asset/inline" }
         ]
-    },
-
-    resolve: {
-        modules: [config.src, "node_modules"],
-        extensions: [".js", ".jsx", ".json"],
-        alias: {
-            "@": config.src
-        }
     }
+
+   
 };

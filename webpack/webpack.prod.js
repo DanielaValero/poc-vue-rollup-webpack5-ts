@@ -7,8 +7,6 @@ const cssWebpackConfig = require("./webpack.css.js");
 const config = require("../project.config");
 const terserOptions = require("./terserOptions");
 
-const paths = require("./paths");
-
 
 module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
     mode: "production",
