@@ -3,6 +3,7 @@
 const path = require("path");
 
 module.exports = {
+    entry: path.resolve(__dirname, "../src/main.ts"),
     src: path.resolve(__dirname, "../src"),
     public: path.resolve(__dirname, "../public"),
     outputDir: path.resolve(__dirname, "../dist"),

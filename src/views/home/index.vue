@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="/assets/images/vue-logo.png" />
+    <img class="image" alt="Vue logo" src="/assets/vue-logo.png" />
     <HelloWorld msg="Welcome to Your Vue3 Boilerplate" />
   </div>
 </template>
@@ -15,3 +15,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.image {
+  width: 40px;
+}
+</style>

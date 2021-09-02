@@ -6,6 +6,7 @@
     "build:rollup": "rollup -c ./rollup/rollup.config.js",
     "watch:rollup": "rollup -c ./rollup/rollup.config.js -w",
     "serve:rollup": "sirv public",
+    "watch:webpack": "webpack --watch --config ./webpack/webpack.dev.js",
     "serve:webpack": "webpack serve --config ./webpack/webpack.dev.js",
     "build:webpack": "webpack build --config ./webpack/webpack.prod.js"
   },

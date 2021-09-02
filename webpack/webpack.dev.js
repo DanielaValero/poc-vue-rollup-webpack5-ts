@@ -10,15 +10,13 @@ module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
     mode: "development",
 
     // Control how source maps are generated
-    // devtool: 'inline-source-map',
-    devtool: "eval-cheap-module-source-map",
+    devtool: "inline-source-map",
 
     // Spin up a server for quick development
     devServer: {
         historyApiFallback: true,
-        // contentBase: config.build,
         open: false,
-        compress: true,
+        compress: false,
         hot: true,
         port: config.dev.port,
         devMiddleware: {

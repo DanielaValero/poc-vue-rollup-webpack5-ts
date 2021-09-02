@@ -11,7 +11,13 @@ const terserOptions = require("./terserOptions");
 module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
     mode: "production",
     devtool: false,
+    entry: {
+        app: config.entry
+    },
     output: {
+        path: config.build.outputDir,
+        filename: "[name].[fullhash].js",
+        chunkFilename: "[name].[contenthash].js",
         publicPath: config.build.publicPath
     },
 

@@ -41,7 +41,7 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: config.public,
+                    from: path.resolve(__dirname, "../src/assets/images"), 
                     to: "assets",
                     globOptions: {
                         ignore: ["*.DS_Store"]
@@ -104,7 +104,7 @@ module.exports = {
 
             // ts
             {
-                test: /\.tsx?$/,
+                test: /\.ts?$/,
                 use: [
                     "thread-loader",
                     "babel-loader",
