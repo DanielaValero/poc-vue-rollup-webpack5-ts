@@ -6,6 +6,14 @@
   <router-view />
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+});
+</script>
+
+
 <style lang="css">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

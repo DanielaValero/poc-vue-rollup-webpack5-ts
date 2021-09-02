@@ -85,38 +85,14 @@ module.exports = {
                 test: /\.vue$/,
                 loader: "vue-loader"
             },
-
-            // babel
-            {
-                test: /\.m?jsx?$/,
-                exclude: (file) => 
-                {
-                    // always transpile js in vue files
-                    if (/\.vue\.jsx?$/.test(file)) 
-                    {
-                        return false;
-                    }
-                    // Don't transpile node_modules
-                    return /node_modules/.test(file);
-                },
-                use: ["babel-loader"]
-            },
-
             // ts
             {
                 test: /\.ts?$/,
                 use: [
-                    "thread-loader",
-                    "babel-loader",
-                    {
-                        loader: "ts-loader",
-                        options: {
-                            transpileOnly: true,
-                            appendTsSuffixTo: ["\\.vue$"],
-                            happyPackMode: true
-                        }
-                    }
-                ]
+                    // "thread-loader",
+                    "ts-loader"
+                ],
+                exclude: /node_modules/
             },
 
 
