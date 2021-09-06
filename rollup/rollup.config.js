@@ -7,8 +7,9 @@ import typescript from "rollup-plugin-typescript";
 import css from "rollup-plugin-css-only";
 import child_process from "child_process";
 import alias from "@rollup/plugin-alias";
-
+import config from "../project.config";
 const production = !process.env.ROLLUP_WATCH;
+import pkg from "../package.json";
 
 function serve()
 {
@@ -35,13 +36,28 @@ function serve()
 }
 
 export default {
-    input: "src/main.ts",
-    output: {
-        sourcemap: true,
-        format: "iife",
-        name: "app",
-        file: "public/index.js"
-    },
+    input: config.entry,
+    output: [
+        {
+            dir: config.outputDirRollup,
+            entryFileNames: pkg.name + ".[format].js",
+            chunkFileNames: pkg.name + ".vendor.common.js",
+            format: "cjs",
+            exports: "named",
+            sourcemap: false
+        }, {
+            dir: config.outputDirRollup,
+            format: "esm",
+            entryFileNames: pkg.name + ".[format].js",
+            chunkFileNames: pkg.name + ".vendor.js",
+            exports: "named",
+            sourcemap: true
+        }
+    ],
+    external: [
+        ...Object.keys(pkg.peerDependencies || {}),
+        ...Object.keys(pkg.dependencies || {})
+    ],
     plugins: [
         alias({
             entries: {
@@ -60,7 +76,9 @@ export default {
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
         resolve({
             browser: true,
-            dedupe: ["vue"]
+            dedupe: ["vue"],
+            modulesOnly: true,
+            extensions: [".js", "vue"]
         }),
 
         commonjs(),

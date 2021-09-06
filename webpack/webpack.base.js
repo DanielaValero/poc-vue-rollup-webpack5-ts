@@ -11,12 +11,12 @@ const path = require("path");
 module.exports = {
     // Where webpack looks to start building the bundle
     entry: {
-        app: "./src/main.ts"
+        app: config.entry// "./src/main.ts"
     },
 
     // Where webpack outputs the assets and bundles
     output: {
-        path: config.outputDir,
+        path: config.outputDirWebpack,
         publicPath: config.dev.publicPath
     },
 

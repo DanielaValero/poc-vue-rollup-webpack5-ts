@@ -6,14 +6,15 @@
 </template>
 
 <script lang="ts">
-import HelloWorld from "../../components/hello-world.vue";
+import HelloWorld from "@/components/hello-world.vue";
+import { defineComponent } from "vue";
 
-export default {
-    name: "Home",
-    components: {
-        HelloWorld
-    }
-};
+export default defineComponent({
+  name: "Home",
+  components: {
+    HelloWorld,
+  },
+});
 </script>
 
 <style scoped>
