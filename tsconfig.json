@@ -3,6 +3,7 @@
         "outDir": "./dist",
         "target": "esnext",
         "module": "esnext",
+        "sourceMap": false,
         "strict": true,
         "jsx": "preserve",
         "moduleResolution": "node",

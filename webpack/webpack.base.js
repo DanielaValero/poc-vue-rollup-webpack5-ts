@@ -7,6 +7,7 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 const config = require("../project.config");
 const path = require("path");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
     // Where webpack looks to start building the bundle
@@ -25,13 +26,16 @@ module.exports = {
             "@": config.src
         },
         extensions: [".ts", ".tsx", ".js", ".jsx", ".vue", ".json"],
-        modules: [config.src, "node_modules"]
+        modules: [config.src, "node_modules"],
+        plugins: [
+            new TsconfigPathsPlugin({ configFile: path.resolve(__dirname, "../tsconfig.json") })
+        ]
    
     },
 
     // Customize the webpack build process
-    plugins: [
-    // Removes/cleans build folders and unused assets when rebuilding
+    plugins: [  
+        // Removes/cleans build folders and unused assets when rebuilding
         new CleanWebpackPlugin(),
 
         new VueLoaderPlugin(),
