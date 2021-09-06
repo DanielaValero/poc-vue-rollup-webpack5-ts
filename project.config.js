@@ -7,7 +7,7 @@ module.exports = {
     src: path.resolve(__dirname, "./src"),
     public: path.resolve(__dirname, "./public"),
     outputDirWebpack: path.resolve(__dirname, "./dist/webpack"),
-    outputDirRollup: path.resolve(__dirname, "./dist/webpack"),
+    outputDirRollup: path.resolve(__dirname, "./dist/rollup"),
 
     dev: {
         publicPath: "/",

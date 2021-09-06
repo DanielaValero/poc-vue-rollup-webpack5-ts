@@ -7,7 +7,7 @@ import typescript from "rollup-plugin-typescript";
 import css from "rollup-plugin-css-only";
 import child_process from "child_process";
 import alias from "@rollup/plugin-alias";
-import config from "../project.config";
+const config = require("../project.config");
 const production = !process.env.ROLLUP_WATCH;
 import pkg from "../package.json";
 
@@ -60,9 +60,15 @@ export default {
     ],
     plugins: [
         alias({
-            entries: {
-                vue: "./node_modules/vue/dist/vue.runtime.esm-browser" + (production ? ".prod" : "") + ".js"
-            }
+            entries: [
+            //     {
+            //     find: vue,
+            //     replace: "./node_modules/vue/dist/vue.runtime.esm-browser" + (production ? ".prod" : "") + ".js"
+            // }, 
+                {
+                    find: "@/**",
+                    replace: config.src
+                }]
         }),
         vue({ }),
         // we'll extract any component CSS out into
