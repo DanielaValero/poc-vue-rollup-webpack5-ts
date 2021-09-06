@@ -4,12 +4,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
-    component: () => import(/* webpackChunkName: "home" */ "../views/home"),
+    component: () => import(/* webpackChunkName: "home" */ "@/views/home"),
   },
   {
     path: "/about",
     name: "About",
-    component: () => import(/* webpackChunkName: "about" */ "../views/about"),
+    component: () => import(/* webpackChunkName: "about" */ "@/views/about"),
   },
 ];
 
