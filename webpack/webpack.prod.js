@@ -13,7 +13,7 @@ module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
     devtool: false,
     output: {
         path: config.build.outputDir,
-        filename: "[name].[fullhash].js",
+        filename: '[name].[contenthash].bundle.js',
         chunkFilename: "[name].[contenthash].js",
         publicPath: config.build.publicPath
     },

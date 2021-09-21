@@ -1,18 +1,18 @@
 <template>
   <div class="home">
     <img class="image" alt="Vue logo" src="/assets/vue-logo.png" />
-    <HelloWorld msg="Welcome to Your Vue3 Boilerplate" />
+    <HolaMundo msg="Welcome to Your Vue3 Boilerplate" />
   </div>
 </template>
 
 <script lang="ts">
-import HelloWorld from "@/components/helloWorld.vue";
+import HolaMundo from "@/components/HolaMundo";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Home",
   components: {
-    HelloWorld,
+    HolaMundo,
   },
 });
 </script>

@@ -12,15 +12,22 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 module.exports = {
     // Where webpack looks to start building the bundle
     entry: {
-        app: config.entry// "./src/main.ts"
+        app: config.entry,
+        fragment: config.fragment,
+        // fragment: {
+        //     entry: config.fragment,
+        //     filename: "fragment.html"
+        // }
     },
 
     // Where webpack outputs the assets and bundles
     output: {
         path: config.outputDirWebpack,
-        publicPath: config.dev.publicPath
+        publicPath: config.dev.publicPath,
+        filename: '[name].bundle.js',
     },
-
+    
+  
     resolve: {
         alias: {
             "@": config.src
@@ -74,7 +81,9 @@ module.exports = {
         new DefinePlugin({
             // vue3 feature flags <http://link.vuejs.org/feature-flags>
             __VUE_OPTIONS_API__: "true",
-            __VUE_PROD_DEVTOOLS__: "false"
+            __VUE_PROD_DEVTOOLS__: "false",
+            __VUE_I18N_LEGACY_API__: "false",
+            __INTLIFY_PROD_DEVTOOLS__: "true"
 
             //  ...resolveClientEnv({ publicPath: config.dev.publicPath })
         })
@@ -86,14 +95,40 @@ module.exports = {
 
         rules: [
             {
-                test: /\.vue$/,
-                loader: "vue-loader"
+                test: /.vue$/,
+                loader: "vue-loader",
             },
+            {
+                test: /(\.ce)?\.vue$/,
+                loader: "vue-loader",
+                // options: {
+                //     compilerOptions: {
+                //         customElement: true
+                //     }
+                // }
+            },
+            // babel
+            {
+                test: /\.m?jsx?$/,
+                exclude: (file) => 
+                {
+                    // always transpile js in vue files
+                    if (/\.vue\.jsx?$/.test(file)) 
+                    {
+                        return false;
+                    }
+                    // Don't transpile node_modules
+                    return /node_modules/.test(file);
+                },
+                use: ["thread-loader", "babel-loader"]
+            },
+      
             // ts
             {
                 test: /\.ts?$/,
                 use: [
                     // "thread-loader",
+                    "babel-loader",
                     "ts-loader"
                 ],
                 exclude: /node_modules/

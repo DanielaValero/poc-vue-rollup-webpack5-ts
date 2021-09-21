@@ -1,4 +1,3 @@
-const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const config = require("../project.config");
 const baseWebpackConfig = require("./webpack.base.js");
@@ -22,10 +21,5 @@ module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
         devMiddleware: {
             publicPath: config.dev.publicPath
         }
-    },
-
-    plugins: [
-    // Only update what has changed on hot reload
-        new webpack.HotModuleReplacementPlugin()
-    ]
+    }
 });
